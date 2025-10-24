@@ -1,21 +1,41 @@
-.navbar .navbar-brand {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-family: 'Playwrite AU TAS', 'Times New Roman', Times, serif;
+/* Apply Inter font to the whole page */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Apply Lobster font to the logo */
+        .logo-font {
+            font-family: 'Lobster', cursive;
+        }
+
+/* Reset default margins to ensure the navbar can reach the viewport edges */
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
-.navbar .navbar-brand img {
-	height: 75px; /* match the HTML height attribute */
-	width: auto;
-	display: block;
+/* Prevent horizontal scroll when we nudge elements left on small screens */
+body {
+    overflow-x: hidden;
 }
 
-/* Optional: small left padding so the logo isn't flush against the screen edge */
-.navbar .navbar-brand.ps-3 {
-	padding-left: 0.75rem;
-}
+/* When the viewport is very narrow, move the brand left so logo/title appear closer to the screen edge */
+@media (max-width: 414px) {
+    /* remove inner wrapper padding so nav background stays full-width */
+    nav > div.w-full {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 
-.nav-item {
-    padding-right: 20px;
+    /* target the brand anchor and nudge it left slightly */
+    nav .flex-shrink-0 > a {
+        padding-left: 0 !important;
+        margin-left: -0.5rem; /* move 8px to the left */
+    }
+
+    /* make the logo a little smaller on very small screens to avoid pushing layout */
+    nav .flex-shrink-0 > a img {
+        height: 40px;
+        width: auto;
+        display: block;
+    }
 }
